@@ -215,25 +215,25 @@ body {
     }
 
     .content input[type="text"] {
-        width: 300px; /* 调整输入框的宽度 */
-        padding: 10px; /* 调整输入框的内边距 */
-        border: 1px solid #ccc; /* 添加边框 */
-        border-radius: 5px; /* 圆角 */
-        font-size: 20px; /* 设置字体大小 */
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #ccc; 
+        border-radius: 5px; 
+        font-size: 20px; 
     }
     
     .content input[type="submit"] {
-        padding: 10px 20px; /* 调整按钮的内边距 */
-        background-color: #5558c9; /* 背景颜色 */
-        color: #fff; /* 文本颜色 */
-        border: none; /* 去除边框 */
-        border-radius: 5px; /* 圆角 */
-        font-size: 20px; /* 设置字体大小 */
-        cursor: pointer; /* 鼠标样式 */
+        padding: 10px 20px; 
+        background-color: #5558c9; 
+        color: #fff; 
+        border: none; 
+        border-radius: 5px; 
+        font-size: 20px; 
+        cursor: pointer; 
     }
     
     .content input[type="submit"]:hover {
-        background-color: #3f419a; /* 鼠标悬停时的背景颜色 */
+        background-color: #3f419a; 
     }
 
 .accordion {

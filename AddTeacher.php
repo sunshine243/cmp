@@ -1,9 +1,37 @@
-<!DOCTYPE html>
+<?php
+//include("auth.php");
+require('database.php');
+$status = "";
 
+if(isset($_POST['new']) && $_POST['new'] == 1){
+    $full_name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $profile_desc = "";
+    $profile_image = "";
+    $password = stripslashes($_POST['password']);
+    $password = .md5(mysqli_real_escape_string($con,$password));
+    $ins_query="INSERT into teacher
+ (`full_name`,`email`,`gender`,`profile_desc`,`profile_image`,`password`)values
+ ('$full_name','$email','$gender','$profile_desc','$profile_image','$password')";
+    
+    // Execute the query
+    $result = mysqli_query($con, $ins_query);
+    
+    if($result){
+        $status = "New Teacher Inserted Successfully. </br></br><a href='ViewTeacherList.php'>View Teacher List</a>";
+    } else {
+        // Display error message if query fails
+        $status = "Error: " . mysqli_error($con);
+    }
+}
+?>
+
+
+<!DOCTYPE html>
 <html>
 <head>
-    <title>School Management Project</title>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <link href="index.css" rel="stylesheet" />
 
@@ -46,11 +74,11 @@
                 });
             });
         </script>
-
+    <title>Add School</title>
 </head>
+
 <body>
     <form id="form1" runat="server">
-
         <div class="wrapper">
             <div class="sidebar">
                 <div class="bg_shadow"></div>
@@ -143,13 +171,23 @@
                         <i class="fas fa-bars"></i>
                     </div>
                     <div class="logo">
-                        <a href="#">Navigation bar</a>
+                        <a href="dashboard.php">User Dashboard</a>
+                        <a href="ViewSchoolList.php">View School List</a>
                     </div>
-                </div>  
+                </div>
 
                 <div class="content">
-                <h1>Main Page</h1>
-                </div>
+                <h1>Add New School</h1>
+                    <form name="form" method="POST" action="">
+                    <input type="hidden" name="new" value="1" />
+                    <p><input type="text" name="school_name" placeholder="Enter School Name" required
+                    /></p>
+                    <p><input name="submit" type="submit" value="Add" /></p>
+                    </form>
+                    <?php if (!empty($status)) { ?>
+                        <p style="color:#008000;"><?php echo $status; ?></p>
+                    <?php } ?>
+                </div>                    
             </div>
         </div>
     </form>

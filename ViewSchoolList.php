@@ -80,7 +80,7 @@ if(isset($_POST['new']) && $_POST['new']==1){
 
                     <ul class="siderbar_menu">
                         <li>
-                            <a href="../Admin/AdminHome.aspx">
+                            <a href="index.php">
                                 <div class="icon"><i class="fas fa-home"></i></div>
                                 <div class="title">Home</div>
                             </a>
@@ -103,12 +103,10 @@ if(isset($_POST['new']) && $_POST['new']==1){
                                 <div class="arrow"><i class="fas fa-chevron-down"></i></div>
                             </a>
                             <ul class="accordion">
-                                <li><a href="../Admin/Teacher.aspx" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
-                                <li><a href="../Admin/TeacherSubject.aspx" class="active"><i class="fas fa-book-reader pr-1"></i>Teachers Subject</a></li>
-                                <li><a href="../Admin/Expense.aspx" class="active"><i class="fas fa-hand-holding-usd pr-1"></i>Add Expense</a></li>
-                                <li><a href="../Admin/ExpenseDetails.aspx" class="active"><i class="fas fa-money-check-alt pr-1"></i>Expense Details</a></li>
-                            </ul>
+                                <li><a href="AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
+                                </ul>
                         </li>
+
                         <li>
                             <a href="#">
                                 <div class="icon"><i class="fas fa-user-graduate"></i></div>
@@ -116,37 +114,35 @@ if(isset($_POST['new']) && $_POST['new']==1){
                                 <div class="arrow"><i class="fas fa-chevron-down"></i></div>
                             </a>
                             <ul class="accordion">
-                                <li><a href="../Admin/Student.aspx" class="active"><i class="fas fa-users pr-1"></i>Add Students</a></li>
-                                <li><a href="../Admin/StudAttendanceDetails.aspx" class="active"><i class="far fa-list-alt pr-1"></i>Attendance Details</a></li>
+                                <li><a href="AddStudent.php" class="active"><i class="fas fa-users pr-1"></i>Add Students</a></li>
                             </ul>
 
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="Faq.php">
                                 <div class="icon"><i class="fas fa-clipboard-list"></i></div>
                                 <div class="title">FAQ</div>
-                                <div class="arrow"><i class="fas fa-chevron-down"></i></div>
                             </a>
-                            <ul class="accordion">
-                                <li><a href="../Admin/Marks.aspx" class="active"><i class="fas fa-notes-medical pr-1"></i>Add Marks</a></li>
-                                <li><a href="../Admin/MarkDetails.aspx" class="active"><i class="fas fa-clipboard-check pr-1"></i>Marks Details</a></li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="Profile.php">
                                 <div class="icon"><i class="fas fa-calendar-alt"></i></div>
                                 <div class="title">Profile</div>
-                                <div class="arrow"><i class="fas fa-chevron-down"></i></div>
                             </a>
-                            <ul class="accordion">
-                                <li><a href="../Admin/EmployeeAttendance.aspx" class="active"><i class="fas fa-calendar-plus pr-1"></i>Employee Attendance</a></li>
-                                <li><a href="../Admin/EmpAttendanceDetails.aspx" class="active"><i class="fas fa-calendar-check pr-1"></i>Employee Details</a></li>
-                            </ul>
                         </li>
                     </ul>
                     <div class="logout_btn">
-                        <asp:LinkButton ID="btnLogOut" runat="server" CausesValidation="false">Logout</asp:LinkButton>
+                        <?php
+                        if (isset($_SESSION['username'])) {
+                            echo '<a href="logout.php">Logout</a>';
+                        } else {
+                            // 如果没有设置用户名会话，则显示登录按钮或其他登录相关的内容
+                            // 这里可以根据需要添加适当的登录按钮或链接
+                            echo '<a href="login.php">Login</a>';
+                        }
+                        ?>
                     </div>
+
 
                 </div>
             </div>
