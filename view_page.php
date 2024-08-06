@@ -55,40 +55,11 @@
         endif;
         ?>
         <div class="col-12 my-2">
-            <a href="manage_page.php" class="btn btn-info text-light text-decoration-none"> + Add New Page Content</a>
+            <a href="./" class="btn btn-info text-light text-decoration-none"> Back to List</a>
         </div>
-        <div class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-4 gx-4 gy-2">
-        <?php 
-        $pages = scandir('./pages');
-        asort($pages);
-        foreach($pages as $page):
-            if(in_array($page,array('.','..')))
-            continue;
-        ?>
-        <div class="col">
-            <div class="card border-right border-primary rounded-0">
-                <div class="card-body">
-                    <div class="col-12 text-truncate"><a href="view_page.php?page=<?php echo urlencode($page) ?>" title="<?php echo $page ?>" class=""><b><?php echo $page ?></b></a></div>
-                    <div class="w-100 d-flex justify-content-end">
-                        <a href="manage_page.php?page=<?php echo urlencode($page) ?>" class="btn btn-sm rounded-0 btn-primary me-2">Edit</a>
-                        <a href="delete_page.php?page=<?php echo urlencode($page) ?>" class="btn btn-sm rounded-0 btn-danger delete_data">Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php endforeach; ?>
+        <div class="content">
+            <?php echo isset($_GET['page']) && is_file("./pages/{$_GET['page']}") ? file_get_contents("./pages/{$_GET['page']}") : "<center>Unknown Page Content.</center>" ?>
         </div>
     </div>
-    <script>
-        $(function(){
-            $('.delete_data').click(function(e){
-                e.preventDefault()
-                var _conf = confirm("Are you sure to delete this page content?")
-                if(_conf ===true){
-                    location.href=$(this).attr('href')
-                }
-            })
-        })
-    </script>
 </body>
 </html>
