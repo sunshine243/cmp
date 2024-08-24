@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creatin Page Content using Summernote</title>
+    <title>Main Post</title>
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./asset/summernote-lite.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -33,13 +33,13 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient" id="topNavBar">
         <div class="container">
-            <a class="navbar-brand" href="https://sourcecodester.com">
-            Sourcecodester
+            <a class="navbar-brand" href="index.php">
+            Back
             </a>
         </div>
     </nav>
     <div class="container py-3" id="page-container">
-        <h3>Creating Page Content using Summernote Library</h3>
+        <h3>Content👇🏻👇🏻👇🏻</h3>
         <hr>
         <?php 
         if(isset($_SESSION['msg'])):

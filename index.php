@@ -33,13 +33,13 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient" id="topNavBar">
         <div class="container">
-            <a class="navbar-brand" href="https://sourcecodester.com">
-            Sourcecodester
+            <a class="navbar-brand" href="./admin/admin_index.php">
+            Home 
             </a>
         </div>
     </nav>
     <div class="container py-3" id="page-container">
-        <h3>Creating Page Content using Summernote Library</h3>
+        <h3>The posts will show on main page.</h3>
         <hr>
         <?php 
         if(isset($_SESSION['msg'])):
