@@ -19,6 +19,7 @@ if (isset($_POST['submit'])){
         $row = mysqli_fetch_assoc($result);
         $_SESSION['id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
+        $_SESSION['role'] = $row['role'];
         echo "<script type='text/javascript'>window.location.href = 'admin_index.php';</script>";
 
         exit();

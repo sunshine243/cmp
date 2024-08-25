@@ -3,12 +3,14 @@ session_start();
 include ('auth.php');
 require('database.php');
 
+
 if (isset($_POST['submit'])){
     $username = stripslashes($_POST['username']);
     $username = mysqli_real_escape_string($con,$username);
     $password = stripslashes($_POST['password']);
     $password = mysqli_real_escape_string($con,$password);
     $password = md5($password); // Hash the password
+    
 
     $query = "SELECT * FROM `teacher` WHERE username='$username' AND password='$password'";
     
@@ -19,6 +21,7 @@ if (isset($_POST['submit'])){
         $row = mysqli_fetch_assoc($result);
         $_SESSION['id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
+        $_SESSION['role'] = $row['role'];
         echo "<script type='text/javascript'>window.location.href = 'teacher_index.php';</script>";
 
         exit();

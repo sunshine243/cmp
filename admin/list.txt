@@ -1,0 +1,23 @@
+yau academic|../schools/yau_academic.php
+See|../schools/see.php
+tee|../schools/tee.php
+see1|../schools/see1.php
+see2|../schools/see2.php
+1234|../schools/1234.php
+abc|../schools/abc.php
+see2222|../schools/see2222.php
+test123|../schools/test123.php
+testing12|../schools/testing12.php
+testing123|../schools/testing123.php
+testing1234|../schools/testing1234.php
+testing12345|../schools/testing12345.php
+testing123456|../schools/testing123456.php
+testings|../schools/testings.php
+tests1|../schools/tests1.php
+testing1234567|../schools/testing1234567.php
+testing12345678|../schools/testing12345678testing12345678.php
+012|../schools/012/012.php
+0|../schools/0/0.php
+1|../schools/1/1.php
+2|../schools/2/2.php
+3|../schools/3/3.php

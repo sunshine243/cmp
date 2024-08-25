@@ -18,8 +18,9 @@ if(isset($_POST['new']) && $_POST['new'] == 1){
     $profile_image = "";
     $password = stripslashes($_POST['password']);
     $password = md5(mysqli_real_escape_string($con,$password));
-    $ins_query="INSERT into teacher (`full_name`,`username`,`email`,`gender`,`profile_desc`,`profile_image`,`password`)values
-    ('$full_name','$username','$email','$gender','$profile_desc','$profile_image','$password')";
+    $role = $_POST['role'];
+    $ins_query="INSERT into teacher (`full_name`,`username`,`email`,`gender`,`profile_desc`,`profile_image`,`password`,`role`)values
+    ('$full_name','$username','$email','$gender','$profile_desc','$profile_image','$password','$role')";
     
     // Execute the query
     $result = mysqli_query($con, $ins_query);
@@ -212,6 +213,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                         <input type="radio" name="gender" value="Female" required> Female
                     </p>
                     <p><input type="password" name="password" placeholder="Enter Password" required /></p>
+                    <p><input type="role" name="role" placeholder="Enter Role" required /></p>
                     <p><input type="submit" name="submit" value="Add" /></p>
                 </form>
                 <?php if (!empty($status)) { ?>

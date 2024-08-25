@@ -188,6 +188,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 <th><strong>Email</strong></th>
                                 <th><strong>Gender</strong></th>
                                 <th><strong>Password</strong></th>
+                                <th><strong>Role</strong></th>
                                 <th><strong>Edit</strong></th>
                                 <th><strong>Delete</strong></th>
                             </tr>
@@ -209,6 +210,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                         <td align="center"><?php echo $row["email"]; ?></td>
                                         <td align="center"><?php echo $row["gender"]; ?></td>
                                         <td align="center"><?php echo $row["password"]; ?></td>
+                                        <td align="center"><?php echo $row["role"]; ?></td>
                                         <td align="center">
                                         <a href="UpdateTeacher.php?id=<?php echo $row["id"]; ?>">Update</a></td>
                                         <td align="center">

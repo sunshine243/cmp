@@ -1,7 +1,7 @@
 <?php
 session_start();
-include ('auth.php');
-include 'database.php'; 
+include('auth.php');
+include 'database.php';
 
 if (!isset($_SESSION['id'])) {
     header("Location: admin_login.php");
@@ -9,11 +9,11 @@ if (!isset($_SESSION['id'])) {
 }
 $status = "";
 
-if(isset($_POST['new']) && $_POST['new']==1){
- $school_name =$_REQUEST['school_name'];
- $ins_query="INSERT into school (`school_name`)values ('$school_name')";
- mysqli_query($con,$ins_query) or die(mysqli_error($con));
- $status = "New School Inserted Successfully.
+if (isset($_POST['new']) && $_POST['new'] == 1) {
+    $school_name = $_REQUEST['school_name'];
+    $ins_query = "INSERT into school (`school_name`)values ('$school_name')";
+    mysqli_query($con, $ins_query) or die(mysqli_error($con));
+    $status = "New School Inserted Successfully.
  </br></br><a href='ViewSchoolList.php'>View School List</a>";
 }
 
@@ -38,50 +38,52 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <link href="../css/index.css" rel="stylesheet" />
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-        <script>
-            $(document).ready(function () {
-                $(".arrow").click(function () {
-                    $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
-                    $(this).siblings(".accordion").slideToggle();
-                });
-
-                $(".siderbar_menu li").click(function () {
-                    // Check if the current item is active
-                    var isActive = $(this).hasClass("active");
-
-                    // Remove 'active' class from all items
-                    $(".siderbar_menu li").removeClass("active");
-                    // Close all accordions
-                    $(".accordion").slideUp();
-                    // Change all arrow icons to 'fa-chevron-down'
-                    $(".arrow i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
-
-                    // If the clicked item was not active, make it active and open its accordion
-                    if (!isActive) {
-                        $(this).addClass("active");
-                        $(this).find(".accordion").slideDown();
-                        $(this).find(".arrow i").toggleClass("fa-chevron-down fa-chevron-up");
-                    }
-                });
-
-                $(".hamburger").click(function () {
-                    $(".wrapper").addClass("active");
-                });
-
-                $(".close, .bg_shadow").click(function () {
-                    $(".wrapper").removeClass("active");
-                });
+    <script>
+        $(document).ready(function() {
+            $(".arrow").click(function() {
+                $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
+                $(this).siblings(".accordion").slideToggle();
             });
-        </script>
+
+            $(".siderbar_menu li").click(function() {
+                // Check if the current item is active
+                var isActive = $(this).hasClass("active");
+
+                // Remove 'active' class from all items
+                $(".siderbar_menu li").removeClass("active");
+                // Close all accordions
+                $(".accordion").slideUp();
+                // Change all arrow icons to 'fa-chevron-down'
+                $(".arrow i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+
+                // If the clicked item was not active, make it active and open its accordion
+                if (!isActive) {
+                    $(this).addClass("active");
+                    $(this).find(".accordion").slideDown();
+                    $(this).find(".arrow i").toggleClass("fa-chevron-down fa-chevron-up");
+                }
+            });
+
+            $(".hamburger").click(function() {
+                $(".wrapper").addClass("active");
+            });
+
+            $(".close, .bg_shadow").click(function() {
+                $(".wrapper").removeClass("active");
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -121,7 +123,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 <li><a href="AddSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add School</a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a href="#">
                                 <div class="icon"><i class="fas fa-user-tie"></i></div>
@@ -130,7 +132,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </a>
                             <ul class="accordion">
                                 <li><a href="AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
-                                </ul>
+                            </ul>
                         </li>
 
                         <li>
@@ -180,8 +182,8 @@ if ($result && mysqli_num_rows($result) > 0) {
                     </div>
                     <div class="logo">
                         <a href="admin_index.php">Home Page</a>
-|                       <a href="AddSchool.php">Add New School</a>
-|                       <a href="admin_login.php">Logout</a>
+                        | <a href="AddSchool.php">Add New School</a>
+                        | <a href="admin_login.php">Logout</a>
                     </div>
                 </div>
 
@@ -202,25 +204,35 @@ if ($result && mysqli_num_rows($result) > 0) {
                             $sel_query = "SELECT * FROM school ORDER BY id DESC;";
                             $result = mysqli_query($con, $sel_query);
                             while ($row = mysqli_fetch_assoc($result)) {
+                                $school_id = $row["id"];
+                                $school_name = $row["school_name"];
+                                $page_name = strtolower(str_replace(' ', '_', $school_name)) . '.php';
+                            
                             ?>
-                            <tr>
-                                <td align="center"><?php echo $count; ?></td>
-                                <td align="center"><?php echo $row["school_name"]; ?></td>
-                                <td align="center">
-                                <a href="UpdateSchool.php?id=<?php echo $row["id"]; ?>">Update</a></td>
-                                <td align="center">
-                                <a href="DeleteSchool.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('Are you sure you want to delete this school?')">Delete</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td align="center"><?php echo $count; ?></td>
+                                    <td align="center">
+                                        <a href="../schools/<?php echo $school_name . '/' . $page_name; ?>" target="_blank">
+                                            <?php echo $school_name; ?>
+                                        </a>
+                                    </td>
+                                    <td align="center">
+                                        <a href="UpdateSchool.php?id=<?php echo $row["id"]; ?>">Update</a>
+                                    </td>
+                                    <td align="center">
+                                        <a href="DeleteSchool.php?id=<?php echo $row["id"]; ?>" onclick="return confirm('Are you sure you want to delete this school?')">Delete</a>
+                                    </td>
+                                </tr>
                             <?php
                                 $count++;
                             }
                             ?>
                         </tbody>
                     </table>
-                </div> 
+                </div>
             </div>
         </div>
     </form>
 </body>
+
 </html>
