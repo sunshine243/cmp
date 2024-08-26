@@ -9,8 +9,6 @@ if (!isset($_SESSION['id'])) {
 }
 $status = "";
 
-
-
 $userId = $_SESSION['id'];
 $query = "SELECT username, profile_image FROM admin WHERE id='$userId'";
 $result = mysqli_query($con, $query);
@@ -268,10 +266,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="content">
                         <h1>Welcome to $school_name!</h1>
                         <p>This is the auto-generated page for $school_name.</p>
-
                         <?php if (\$_SESSION['role'] == "admin"): ?>
-                        <a href="../manage_post.php" class="btn btn-primary">Add Post</a>
+                        <a href="../../../manage_post.php" class="btn btn-primary">Add Post</a>
                     <?php endif; ?>
+                    
+                        <div style="margin-bottom: 20px;"></div>
+                    <div class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-4 gx-4 gy-2">
+                    <?php 
+                        \$posts = scandir('./post');
+                        asort(\$posts); 
+                        foreach(\$posts as \$post):
+                        if(in_array(\$post,array('.','..')))
+                        continue;
+                    ?>
+                    <div class="col" style="margin: 10px 0; width: auto;">
+                        <div class="card border-right border-primary rounded-0">
+                            <div class="card-body">
+                                <div class="col-12 text-truncate">
+                                    <a href="../view_page.php?page=<?php echo urlencode(\$post) ?>" title="<?php echo \$page ?>" class=""><b><?php echo \$post ?></b></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+                        
                     </div>
                 </div>
             </div>

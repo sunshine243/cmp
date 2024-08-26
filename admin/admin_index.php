@@ -206,7 +206,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                 <div class="content">
                     <h1></h1>
-                    <a href="../index.php" class="btn btn-primary">Add Post</a>
+                    <a href="../admin_addpage.php" class="btn btn-primary">Add Post</a>
                     <div style="margin-bottom: 20px;"></div>
                     <div class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-4 gx-4 gy-2">
                     <?php 

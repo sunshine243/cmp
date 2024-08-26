@@ -28,7 +28,7 @@ $save = file_put_contents("./pages/{$new_name}.html",$content);
 if($save > 0){
     $_SESSION['msg']['type'] = 'success';
     $_SESSION['msg']['text'] = 'Page Content Successfully Saved.';
-    header('location:./');
+    header('location:./admin_addpage.php');
 }else{
     $_SESSION['msg']['type'] = 'danger';
     $_SESSION['msg']['text'] = 'Page Content has failed to save.';

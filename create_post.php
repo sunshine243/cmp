@@ -43,7 +43,7 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient" id="topNavBar">
         <div class="container">
-            <a class="navbar-brand" href="admin_addpage.php">
+            <a class="navbar-brand" href="index.php">
             Back
             </a>
         </div>
@@ -67,7 +67,7 @@
                 Manage Page Content
             </div>
             <div class="card-body">
-                <form action="./save_page.php" id="content-form" method="POST">
+                <form action="save_page.php" id="content-form" method="POST">
                     <input type="hidden" name="filename" value="<?php echo isset($_SESSION['POST']['filename']) ? $_SESSION['POST']['filename'] : (isset($_GET['page']) ? str_replace('.html','',$_GET['page']) : '')  ?>">
                     <div class="form-group col-6">
                         <label for="fname" class="control-label">File Name <span class="text-info"><small>([a-z0-9A-Z_-])</small></span></label>

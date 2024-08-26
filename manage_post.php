@@ -1,8 +1,13 @@
-<?php session_start(); ?>
- 
+<?php 
+session_start(); 
+
+include('auth.php');
+include 'database.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,43 +19,45 @@
     <script src="./asset/summernote-lite.js"></script>
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <style>
-         :root {
+        :root {
             --bs-success-rgb: 71, 222, 152 !important;
         }
- 
+
         html,
         body {
             height: 100%;
             width: 100%;
             font-family: Apple Chancery, cursive;
         }
-        .btn-info.text-light:hover,.btn-info.text-light:focus{
+
+        .btn-info.text-light:hover,
+        .btn-info.text-light:focus {
             background: #000;
         }
     </style>
 </head>
- 
+
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient" id="topNavBar">
         <div class="container">
             <a class="navbar-brand" href="./admin/admin_index.php">
-            Home 
+                Home
             </a>
         </div>
     </nav>
     <div class="container py-3" id="page-container">
         <h3>The posts will show on main page.</h3>
         <hr>
-        <?php 
-        if(isset($_SESSION['msg'])):
+        <?php
+        if (isset($_SESSION['msg'])):
         ?>
-        <div class="alert alert-<?php echo $_SESSION['msg']['type'] ?>">
-            <div class="d-flex w-100">
-                <div class="col-11"><?php echo $_SESSION['msg']['text'] ?></div>
-                <div class="col-1 d-flex justify-content-end align-items-center"><button class="btn-close" onclick="$(this).closest('.alert').hide('slow')"></button></div>
+            <div class="alert alert-<?php echo $_SESSION['msg']['type'] ?>">
+                <div class="d-flex w-100">
+                    <div class="col-11"><?php echo $_SESSION['msg']['text'] ?></div>
+                    <div class="col-1 d-flex justify-content-end align-items-center"><button class="btn-close" onclick="$(this).closest('.alert').hide('slow')"></button></div>
+                </div>
             </div>
-        </div>
-        <?php 
+        <?php
             unset($_SESSION['msg']);
         endif;
         ?>
@@ -58,37 +65,43 @@
             <a href="manage_page.php" class="btn btn-info text-light text-decoration-none"> + Add New Page Content</a>
         </div>
         <div class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-4 gx-4 gy-2">
-        <?php 
-        $pages = scandir('./pages');
-        asort($pages);
-        foreach($pages as $page):
-            if(in_array($page,array('.','..')))
-            continue;
-        ?>
-        <div class="col">
-            <div class="card border-right border-primary rounded-0">
-                <div class="card-body">
-                    <div class="col-12 text-truncate"><a href="view_page.php?page=<?php echo urlencode($page) ?>" title="<?php echo $page ?>" class=""><b><?php echo $page ?></b></a></div>
-                    <div class="w-100 d-flex justify-content-end">
-                        <a href="manage_page.php?page=<?php echo urlencode($page) ?>" class="btn btn-sm rounded-0 btn-primary me-2">Edit</a>
-                        <a href="delete_page.php?page=<?php echo urlencode($page) ?>" class="btn btn-sm rounded-0 btn-danger delete_data">Delete</a>
+            <?php
+            $school_name = htmlspecialchars($_POST['school_name']);
+
+            $posts = scandir('./schools/' . $school_name . '/post');
+            asort($posts);
+            foreach ($posts as $post):
+                if (in_array($post, array('.', '..')))
+                    continue;
+            ?>
+                <div class="col">
+                    <div class="card border-right border-primary rounded-0">
+                        <div class="card-body">
+                            <div class="col-12 text-truncate">
+                                <a href="../view_page.php?page=<?php echo urlencode($post) ?>" title="<?php echo $post ?>" class=""><b><?php echo $post ?></b></a>
+                            </div>
+                        </div>
+                        <div class="w-100 d-flex justify-content-end">
+                            <a href="manage_page.php?page=<?php echo urlencode($post) ?>" class="btn btn-sm rounded-0 btn-primary me-2">Edit</a>
+                            <a href="delete_page.php?page=<?php echo urlencode($post) ?>" class="btn btn-sm rounded-0 btn-danger delete_data">Delete</a>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
-        <?php endforeach; ?>
-        </div>
+    <?php endforeach; ?>
+    </div>
     </div>
     <script>
-        $(function(){
-            $('.delete_data').click(function(e){
+        $(function() {
+            $('.delete_data').click(function(e) {
                 e.preventDefault()
                 var _conf = confirm("Are you sure to delete this page content?")
-                if(_conf ===true){
-                    location.href=$(this).attr('href')
+                if (_conf === true) {
+                    location.href = $(this).attr('href')
                 }
             })
         })
     </script>
 </body>
+
 </html>

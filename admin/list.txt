@@ -21,3 +21,12 @@ testing12345678|../schools/testing12345678testing12345678.php
 1|../schools/1/1.php
 2|../schools/2/2.php
 3|../schools/3/3.php
+UTAR|../schools/UTAR/utar.php
+utar1|../schools/utar1/utar1.php
+utar1|../schools/utar1/utar1.php
+utar2|../schools/utar2/utar2.php
+utar2|../schools/utar2/utar2.php
+utar3|../schools/utar3/utar3.php
+utar4|../schools/utar4/utar4.php
+utar5|../schools/utar5/utar5.php
+YAU1|../schools/YAU1/yau1.php

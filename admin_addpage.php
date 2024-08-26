@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start(); 
+include ('auth.php');
+include 'database.php'; 
+?>
  
 <!DOCTYPE html>
 <html lang="en">

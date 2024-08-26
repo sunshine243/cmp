@@ -1,7 +1,7 @@
 <?php
 session_start();
-include ('../admin/auth.php');
-include '../admin/database.php';
+include ('../../admin/auth.php');
+include '../../admin/database.php';
 
 if (isset($_SESSION['role']) && $_SESSION['role'] == "teacher") {
     $name = $_SESSION['role'];
@@ -10,42 +10,42 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == "teacher") {
 }
 
 if (!isset($_SESSION['id'])) {
-    header("Location: ../".  ."_login.php");
+    header("Location: ../". $name ."_login.php");
     exit();
 }
 
 
 $userId = $_SESSION['id'];
-$query = "SELECT username, profile_image FROM" .  . " WHERE id='$userId'";
+$query = "SELECT username, profile_image FROM " . $name . " WHERE id='$userId'";
 $result = mysqli_query($con, $query);
 
 if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $username = $row['username']; // 从数据库中获取用户名
-    if (isset($row['profile_image']) && !empty($row['profile_image'])) {
-        $profileImage = $row['profile_image'];
-    } else {
-        $profileImage = '../image/default_profile_image.png';
-    }
+$row = mysqli_fetch_assoc($result);
+$username = $row['username']; // 从数据库中获取用户名
+if (isset($row['profile_image']) && !empty($row['profile_image'])) {
+    $profileImage = '../' . $row['profile_image'];
 } else {
-    // 如果查询失败或者没有找到用户，则使用默认图片并处理错误
-    $username = "Unknown User";
-    $profileImage = '../image/default_profile_image.png';  //default image
+    $profileImage = '../../image/default_profile_image.png';
+}
+} else {
+// 如果查询失败或者没有找到用户，则使用默认图片并处理错误
+$username = "Unknown User";
+$profileImage = '../../image/default_profile_image.png';  //default image
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>testing1234</title>
+    <title>utar4</title>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet" />
+    <link href="../../css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="../bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../asset/summernote-lite.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="../asset/summernote-lite.js"></script>
-    <script src="../bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+    <script src="../../asset/summernote-lite.js"></script>
+    <script src="../../bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <style>
          :root {
             --bs-success-rgb: 71, 222, 152 !important;
@@ -209,12 +209,32 @@ if ($result && mysqli_num_rows($result) > 0) {
                 </div>  
 
                 <div class="content">
-                    <h1>Welcome to testing1234!</h1>
-                    <p>This is the auto-generated page for testing1234.</p>
-
+                    <h1>Welcome to utar4!</h1>
+                    <p>This is the auto-generated page for utar4.</p>
                     <?php if ($_SESSION['role'] == "admin"): ?>
-                    <a href="../manage_post.php" class="btn btn-primary">Add Post</a>
+                    <a href="../../../manage_post.php" class="btn btn-primary">Add Post</a>
                 <?php endif; ?>
+                
+                    <div style="margin-bottom: 20px;"></div>
+                <div class="row row-cols-sm-1 row-cols-md-3 row-cols-xl-4 gx-4 gy-2">
+                <?php 
+                    $posts = scandir('./post');
+                    asort($posts); 
+                    foreach($posts as $post):
+                    if(in_array($post,array('.','..')))
+                    continue;
+                ?>
+                <div class="col" style="margin: 10px 0; width: auto;">
+                    <div class="card border-right border-primary rounded-0">
+                        <div class="card-body">
+                            <div class="col-12 text-truncate">
+                                <a href="../view_page.php?page=<?php echo urlencode() ?>" title="<?php echo $page ?>" class=""><b><?php echo $post ?></b></a></div>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+                    
                 </div>
             </div>
         </div>
