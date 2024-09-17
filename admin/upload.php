@@ -27,14 +27,14 @@ if (isset($_POST["submit"])) {
 }
 
 // Check if file already exists
-// if (file_exists($target_file)) {
-//     echo "Sorry, file already exists.";
-//     $uploadOk = 0;
-//     displayRetryButton();
-// }
+if (file_exists($target_file)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+    displayRetryButton();
+}
 
 // Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
+if ($_FILES["fileToUpload"]["size"] > 10000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
     displayRetryButton();
@@ -57,20 +57,20 @@ if ($uploadOk == 0) {
         echo "The file ". htmlspecialchars(basename($_FILES["fileToUpload"]["name"])). " has been uploaded.";
         
         // // Get current user's old profile image path
-        // $userId = $_SESSION['id'];
-        // $query = "SELECT profile_image FROM admin WHERE id='$userId'";
-        // $result = mysqli_query($con, $query);
-        // if ($result) {
-        //     $row = mysqli_fetch_assoc($result);
-        //     $oldProfileImage = $row['profile_image'];
+        $userId = $_SESSION['id'];
+        $query = "SELECT profile_image FROM admin WHERE id='$userId'";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            $oldProfileImage = $row['profile_image'];
 
-        //     // Delete old profile image if it's not the default image
-        //     if ($oldProfileImage && $oldProfileImage != '../image/default_profile_image.png') {
-        //         if (file_exists($oldProfileImage)) {
-        //             unlink($oldProfileImage);
-        //         }
-        //     }
-        // }
+            // Delete old profile image if it's not the default image
+            if ($oldProfileImage && $oldProfileImage != '../image/default_profile_image.png') {
+                if (file_exists($oldProfileImage)) {
+                    unlink($oldProfileImage);
+                }
+            }
+        }
 
         // Update the database with the new profile image path
         $userId = $_SESSION['id'];

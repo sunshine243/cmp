@@ -35,12 +35,14 @@ if ($result && mysqli_num_rows($result) > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script src="./asset/summernote-lite.js"></script>
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <link href="../css/index.css" rel="stylesheet" />
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./asset/summernote-lite.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./asset/summernote-lite.js"></script>
-    <script src="./bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
+
     <style>
         :root {
             --bs-success-rgb: 71, 222, 152 !important;
@@ -63,46 +65,11 @@ if ($result && mysqli_num_rows($result) > 0) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-    <script>
-        $(document).ready(function() {
-            $(".arrow").click(function() {
-                $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
-                $(this).siblings(".accordion").slideToggle();
-            });
-
-            $(".siderbar_menu li").click(function() {
-                // Check if the current item is active
-                var isActive = $(this).hasClass("active");
-
-                // Remove 'active' class from all items
-                $(".siderbar_menu li").removeClass("active");
-                // Close all accordions
-                $(".accordion").slideUp();
-                // Change all arrow icons to 'fa-chevron-down'
-                $(".arrow i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
-
-                // If the clicked item was not active, make it active and open its accordion
-                if (!isActive) {
-                    $(this).addClass("active");
-                    $(this).find(".accordion").slideDown();
-                    $(this).find(".arrow i").toggleClass("fa-chevron-down fa-chevron-up");
-                }
-            });
-
-            $(".hamburger").click(function() {
-                $(".wrapper").addClass("active");
-            });
-
-            $(".close, .bg_shadow").click(function() {
-                $(".wrapper").removeClass("active");
-            });
-        });
-    </script>
+    
 
 </head>
 
 <body>
-    <form id="form1" runat="server">
 
         <div class="wrapper">
             <div class="sidebar">
@@ -163,9 +130,15 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                         </li>
                         <li>
-                            <a href="quiz.php">
+                            <a href="dashboard.php">
                                 <div class="icon"><i class="fas fa-clipboard-list"></i></div>
                                 <div class="title">Quiz</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../faq/IndexFaq.php">
+                                <div class="icon"><i class="fas fa-info-circle"></i></div>
+                                <div class="title">FAQ</div>
                             </a>
                         </li>
                         <li>
@@ -174,8 +147,14 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 <div class="title">Profile</div>
                             </a>
                         </li>
+                        <li>
+                            <a href="admin_login.php">
+                                <div class="icon"><i class="fas fa-sign-out-alt"></i></div>
+                                <div class="logout_btn">Logout</div>
+                            </a>
+                        </li>
                     </ul>
-                    <div class="logout_btn">
+                    <!-- <div class="logout_btn">
                         <?php
                         if (isset($_SESSION['username'])) {
                             echo '<a href="admin_login.php">Logout</a>';
@@ -185,7 +164,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             echo '<a href="admin_login.php">Logout</a>';
                         }
                         ?>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -205,7 +184,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                     <img src="<?php echo htmlspecialchars($profileImage); ?>" alt="profile_image" id="profileImage" style="width: 200px; height: 200px; object-fit: cover;">
 
                     <!-- Form to upload new profile image -->
-                    <form action="../admin/upload.php" method="post" enctype="multipart/form-data">
+                    <form action="./upload.php" method="post" enctype="multipart/form-data">
                         <label for="fileToUpload">Select image to upload:</label>
                         <input type="file" name="fileToUpload" id="fileToUpload">
                         <input type="submit" value="Upload Image" name="submit">
@@ -213,7 +192,40 @@ if ($result && mysqli_num_rows($result) > 0) {
                 </div>
             </div>
         </div>
-    </form>
 </body>
+<script>
+        $(document).ready(function() {
+            $(".arrow").click(function() {
+                $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
+                $(this).siblings(".accordion").slideToggle();
+            });
 
+            $(".siderbar_menu li").click(function() {
+                // Check if the current item is active
+                var isActive = $(this).hasClass("active");
+
+                // Remove 'active' class from all items
+                $(".siderbar_menu li").removeClass("active");
+                // Close all accordions
+                $(".accordion").slideUp();
+                // Change all arrow icons to 'fa-chevron-down'
+                $(".arrow i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+
+                // If the clicked item was not active, make it active and open its accordion
+                if (!isActive) {
+                    $(this).addClass("active");
+                    $(this).find(".accordion").slideDown();
+                    $(this).find(".arrow i").toggleClass("fa-chevron-down fa-chevron-up");
+                }
+            });
+
+            $(".hamburger").click(function() {
+                $(".wrapper").addClass("active");
+            });
+
+            $(".close, .bg_shadow").click(function() {
+                $(".wrapper").removeClass("active");
+            });
+        });
+    </script>
 </html>

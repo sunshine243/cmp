@@ -1,7 +1,7 @@
 <?php
 session_start();
-include ('auth.php');
-include 'database.php'; 
+include('auth.php');
+include 'database.php';
 
 if (!isset($_SESSION['id'])) {
     header("Location: admin_login.php");
@@ -29,50 +29,52 @@ if ($result && mysqli_num_rows($result) > 0) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">        <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <link href="../css/index.css" rel="stylesheet" />
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-        <script>
-            $(document).ready(function () {
-                $(".arrow").click(function () {
-                    $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
-                    $(this).siblings(".accordion").slideToggle();
-                });
-
-                $(".siderbar_menu li").click(function () {
-                    // Check if the current item is active
-                    var isActive = $(this).hasClass("active");
-
-                    // Remove 'active' class from all items
-                    $(".siderbar_menu li").removeClass("active");
-                    // Close all accordions
-                    $(".accordion").slideUp();
-                    // Change all arrow icons to 'fa-chevron-down'
-                    $(".arrow i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
-
-                    // If the clicked item was not active, make it active and open its accordion
-                    if (!isActive) {
-                        $(this).addClass("active");
-                        $(this).find(".accordion").slideDown();
-                        $(this).find(".arrow i").toggleClass("fa-chevron-down fa-chevron-up");
-                    }
-                });
-
-                $(".hamburger").click(function () {
-                    $(".wrapper").addClass("active");
-                });
-
-                $(".close, .bg_shadow").click(function () {
-                    $(".wrapper").removeClass("active");
-                });
+    <script>
+        $(document).ready(function() {
+            $(".arrow").click(function() {
+                $(this).find("i").toggleClass("fa-chevron-down fa-chevron-up");
+                $(this).siblings(".accordion").slideToggle();
             });
-        </script>
+
+            $(".siderbar_menu li").click(function() {
+                // Check if the current item is active
+                var isActive = $(this).hasClass("active");
+
+                // Remove 'active' class from all items
+                $(".siderbar_menu li").removeClass("active");
+                // Close all accordions
+                $(".accordion").slideUp();
+                // Change all arrow icons to 'fa-chevron-down'
+                $(".arrow i").removeClass("fa-chevron-up").addClass("fa-chevron-down");
+
+                // If the clicked item was not active, make it active and open its accordion
+                if (!isActive) {
+                    $(this).addClass("active");
+                    $(this).find(".accordion").slideDown();
+                    $(this).find(".arrow i").toggleClass("fa-chevron-down fa-chevron-up");
+                }
+            });
+
+            $(".hamburger").click(function() {
+                $(".wrapper").addClass("active");
+            });
+
+            $(".close, .bg_shadow").click(function() {
+                $(".wrapper").removeClass("active");
+            });
+        });
+    </script>
     <title>Add School</title>
 </head>
 
@@ -113,7 +115,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 <li><a href="AddSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add School</a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a href="#">
                                 <div class="icon"><i class="fas fa-user-tie"></i></div>
@@ -122,7 +124,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </a>
                             <ul class="accordion">
                                 <li><a href="AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
-                                </ul>
+                            </ul>
                         </li>
 
                         <li>
@@ -143,7 +145,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </a>
                         </li>
                         <li>
-                            <a href="upload_image.php">
+                            <a href="../<?php echo htmlspecialchars($name); ?>/upload_image.php">
                                 <div class="icon"><i class="fas fa-calendar-alt"></i></div>
                                 <div class="title">Profile</div>
                             </a>
@@ -176,11 +178,12 @@ if ($result && mysqli_num_rows($result) > 0) {
                 </div>
 
                 <div class="content">
-                <h1>Profile</h1>
-                    
-                </div>                    
+                    <h1>Profile</h1>
+
+                </div>
             </div>
         </div>
     </form>
 </body>
+
 </html>

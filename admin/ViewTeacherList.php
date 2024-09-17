@@ -79,7 +79,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 <body>
     <form id="form1" runat="server">
         <div class="wrapper">
-            <div class="sidebar">
+        <div class="sidebar">
                 <div class="bg_shadow"></div>
                 <div class="sidebar_inner">
                     <div class="close">
@@ -113,7 +113,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 <li><a href="AddSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add School</a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a href="#">
                                 <div class="icon"><i class="fas fa-user-tie"></i></div>
@@ -122,7 +122,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </a>
                             <ul class="accordion">
                                 <li><a href="AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
-                                </ul>
+                            </ul>
                         </li>
 
                         <li>
@@ -143,23 +143,38 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </a>
                         </li>
                         <li>
+                            <a href="../faq/IndexFaq.php">
+                                <div class="icon"><i class="fas fa-info-circle"></i></div>
+                                <div class="title">FAQ</div>
+                            </a>
+                        </li>
+                        <li>
                             <a href="upload_image.php">
                                 <div class="icon"><i class="fas fa-calendar-alt"></i></div>
                                 <div class="title">Profile</div>
                             </a>
                         </li>
+                        <li>
+                            <a href="admin_login.php">
+                                <div class="icon"><i class="fas fa-sign-out-alt"></i></div>
+                                <div class="logout_btn">Logout</div>
+                            </a>
+                        </li>
                     </ul>
-                    <div class="logout_btn">
+                    <!-- <div class="logout_btn">
                         <?php
                         if (isset($_SESSION['username'])) {
-                            echo '<a href="../admin/admin_login.php">Logout</a>';
+                            echo '<a href="admin_login.php">Logout</a>';
                         } else {
                             // 如果没有设置用户名会话，则显示登录按钮或其他登录相关的内容
                             // 这里可以根据需要添加适当的登录按钮或链接
-                            echo '<a href="../admin/admin_login.php">Logout</a>';
+                            echo '<a href="admin_login.php">Logout</a>';
                         }
                         ?>
-                    </div>
+                    </div> -->
+
+                </div>
+            </div>
 
 
                 </div>

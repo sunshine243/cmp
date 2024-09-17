@@ -3,11 +3,11 @@ session_start();
 include('auth.php');
 include 'database.php';
 
-if (!isset($_SESSION['id'])) {
-    header("Location: admin_login.php");
-    exit();
+if (isset($_SESSION['role']) && $_SESSION['role'] == "teacher") {
+    $name = $_SESSION['role'];
+} elseif (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+    $name = $_SESSION['role'];
 }
-$status = "";
 
 if (isset($_POST['new']) && $_POST['new'] == 1) {
     $school_name = $_REQUEST['school_name'];

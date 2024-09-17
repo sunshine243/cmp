@@ -9,8 +9,6 @@ if (!isset($_SESSION['id'])) {
 }
 $status = "";
 
-echo $_SESSION['role'];
-
 if (isset($_POST['new']) && $_POST['new'] == 1) {
     $school_name = $_REQUEST['school_name'];
     $ins_query = "INSERT into school (`school_name`)values ('$school_name')";
@@ -217,7 +215,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 <tr>
                                     <td align="center"><?php echo $count; ?></td>
                                     <td align="center">
-                                        <a href="../schools/<?php echo $page_name; ?>" target="_blank">
+                                    <a href="../schools/<?php echo $school_name . '/' . $page_name; ?>" target="_blank">
                                             <?php echo $school_name; ?>
                                         </a>
                                     </td>
