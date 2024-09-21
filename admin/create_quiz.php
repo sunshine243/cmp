@@ -124,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <ul class="siderbar_menu">
                     <li><a href="admin_index.php"><div class="icon"><i class="fas fa-home"></i></div><div class="title">Home</div></a></li>
-                    <li><a href="quiz_dashboard.php"><div class="icon"><i class="fas fa-clipboard-list"></i></div><div class="title">Quiz Dashboard</div></a></li>
+                    <li><a href="dashboard.php"><div class="icon"><i class="fas fa-clipboard-list"></i></div><div class="title">Quiz Dashboard</div></a></li>
                     <li><a href="upload_image.php"><div class="icon"><i class="fas fa-calendar-alt"></i></div><div class="title">Profile</div></a></li>
                     <li><a href="admin_login.php"><div class="icon"><i class="fas fa-sign-out-alt"></i></div><div class="logout_btn">Logout</div></a></li>
                 </ul>

@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
         $_SESSION['username'] = $row['username'];
         $_SESSION['role'] = 'student';
 
-        echo "登录成功! 当前角色是: " . $_SESSION['role'] . "<br>";
-        echo "当前用户ID是: " . $_SESSION['id'] . "<br>";
+        echo "login successfully! The role is : " . $_SESSION['role'] . "<br>";
+        echo "User Id: " . $_SESSION['id'] . "<br>";
         echo "<script type='text/javascript'>window.location.href = 'student_index.php';</script>";
 
         exit();

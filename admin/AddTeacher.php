@@ -138,7 +138,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                                 <li><a href="AddSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add School</a></li>
                             </ul>
                         </li>
-                       
+
                         <li>
                             <a href="#">
                                 <div class="icon"><i class="fas fa-user-tie"></i></div>
@@ -147,7 +147,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </a>
                             <ul class="accordion">
                                 <li><a href="AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
-                                </ul>
+                            </ul>
                         </li>
 
                         <li>
@@ -186,17 +186,6 @@ if ($result && mysqli_num_rows($result) > 0) {
                             </a>
                         </li>
                     </ul>
-                    <!-- <div class="logout_btn">
-                        <?php
-                        if (isset($_SESSION['username'])) {
-                            echo '<a href="admin_login.php">Logout</a>';
-                        } else {
-                            // 如果没有设置用户名会话，则显示登录按钮或其他登录相关的内容
-                            // 这里可以根据需要添加适当的登录按钮或链接
-                            echo '<a href="admin_login.php">Logout</a>';
-                        }
-                        ?>
-                    </div> -->
 
                 </div>
             </div>
@@ -206,8 +195,9 @@ if ($result && mysqli_num_rows($result) > 0) {
                         <i class="fas fa-bars"></i>
                     </div>
                     <div class="logo">
-                        <a href="dashboard.php">User Dashboard</a>
-                        <a href="ViewTeacherList.php">View Teacher List</a>
+                        <a href="ViewSchoolList.php">School List</a>
+                        <a href="ViewTeacherList.php">Teacher List</a>
+                        <a href="ViewStudentList.php">Student List</a>
                     </div>
                 </div>
 

@@ -197,6 +197,7 @@ if ($result->num_rows > 0) {
 						<i class="fas fa-times"></i>
 					</div>
 
+
 					<div class="profile_info">
 						<div class="profile_img">
 							<img src="<?php echo htmlspecialchars($profileImage); ?>" alt="Profile Image">
@@ -207,6 +208,7 @@ if ($result->num_rows > 0) {
 						</div>
 					</div>
 
+
 					<ul class="siderbar_menu">
 						<li>
 							<a href="../<?php echo $name; ?>/<?php echo $name; ?>_index.php">
@@ -214,23 +216,34 @@ if ($result->num_rows > 0) {
 								<div class="title">Home</div>
 							</a>
 						</li>
-						<li>
-							<a href="#">
-								<div class="icon"><i class="fas fa-hotel"></i></div>
-								<div class="title">School</div>
-								<div class="arrow"><i class="fas fa-chevron-down"></i></div>
-							</a>
-							<ul class="accordion">
-								<?php
-								if ($name == "admin") {
-									echo '<li><a href="../admin/AddSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add School</a></li>';
-								} elseif ($name == "teacher") {
-									echo '<li><a href="../teacher/teacher_ViewSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>School List</a></li>';
-								}
-								?>
 
-							</ul>
-						</li>
+
+						<?php if ($name != 'student'): ?>
+							<li>
+								<a href="#">
+									<div class="icon"><i class="fas fa-hotel"></i></div>
+									<div class="title">School</div>
+									<div class="arrow"><i class="fas fa-chevron-down"></i></div>
+								</a>
+								<ul class="accordion">
+									<?php
+									if ($name == "admin") {
+										echo '<li><a href="../admin/AddSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add School</a></li>';
+									} elseif ($name == "teacher") {
+										echo '<li><a href="../teacher/teacher_ViewSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>School List</a></li>';
+									}
+									?>
+								</ul>
+							</li>
+						<?php else: ?>
+							<li>
+								<a href="../schools/<?php echo htmlspecialchars($folderName); ?>/<?php echo htmlspecialchars($folderName); ?>.php">
+									<div class="icon"><i class="fas fa-hotel"></i></div>
+									<div class="title"><?php echo htmlspecialchars($schoolName); ?></div> <!-- 动态显示学校名称 -->
+								</a>
+							</li>
+						<?php endif; ?>
+
 
 						<li>
 							<a href="#">
@@ -239,20 +252,33 @@ if ($result->num_rows > 0) {
 								<div class="arrow"><i class="fas fa-chevron-down"></i></div>
 							</a>
 							<ul class="accordion">
-								<li><a href="AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
+								<?php if ($name == 'admin'): ?>
+									<li><a href="../admin/AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
+								<?php elseif ($name == 'teacher' || $name == 'student'): ?>
+									<li><a href="../<?php echo $name; ?>/teacher_list.php" class="active"><i class="fas fa-users pr-1"></i>Teachers List</a></li>
+								<?php endif; ?>
 							</ul>
 						</li>
 
-						<li>
-							<a href="#">
-								<div class="icon"><i class="fas fa-user-graduate"></i></div>
-								<div class="title">Students</div>
-								<div class="arrow"><i class="fas fa-chevron-down"></i></div>
-							</a>
-							<ul class="accordion">
-								<li><a href="AddStudent.php" class="active"><i class="fas fa-users pr-1"></i>Add Students</a></li>
-							</ul>
-						</li>
+
+						<?php if ($name != 'student'): ?>
+							<li>
+								<a href="#">
+									<div class="icon"><i class="fas fa-user-graduate"></i></div>
+									<div class="title">Students</div>
+									<div class="arrow"><i class="fas fa-chevron-down"></i></div>
+								</a>
+								<ul class="accordion">
+									<?php if ($name == 'admin'): ?>
+										<li><a href="../admin/AddStudent.php" class="active"><i class="fas fa-users pr-1"></i>Add Students</a></li>
+									<?php elseif ($name == 'teacher'): ?>
+										<li><a href="../teacher/student_list.php" class="active"><i class="fas fa-users pr-1"></i>Students List</a></li>
+									<?php endif; ?>
+								</ul>
+							</li>
+						<?php endif; ?>
+
+
 						<li>
 							<a href="../<?php echo ($name === 'student') ? $name . '/quiz_home.php' : $name . '/dashboard.php'; ?>">
 								<div class="icon"><i class="fas fa-clipboard-list"></i></div>
@@ -288,9 +314,8 @@ if ($result->num_rows > 0) {
 						<i class="fas fa-bars"></i>
 					</div>
 					<div class="logo">
-						<a href="ViewSchoolList.php">School List</a>
-						<a href="ViewTeacherList.php">Teacher List</a>
-						<a href="ViewStudentList.php">Student List</a>
+						<a href="../<?php echo $name; ?>/<?php echo $name; ?>_index.php">Home</a>
+						<a href="../<?php echo $name; ?>/<?php echo $name; ?>_login.php">Logout</a>
 					</div>
 				</div>
 

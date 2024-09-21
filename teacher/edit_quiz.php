@@ -129,9 +129,9 @@ if ($result && mysqli_num_rows($result) > 0) {
             <div class="navbar">
                 <div class="hamburger"><i class="fas fa-bars"></i></div>
                 <div class="logo">
-                    <a href="ViewSchoolList.php">School List</a>
-                    <a href="ViewTeacherList.php">Teacher List</a>
-                    <a href="ViewStudentList.php">Student List</a>
+                    <a href="teacher_ViewSchool.php">School List</a>
+                    <a href="teacher_list.php">Teacher List</a>
+                    <a href="student_list.php">Student List</a>
                 </div>
             </div>
 

@@ -45,3 +45,5 @@ TARC|../schools/TARC/tarc.php
 tarumt|../schools/tarumt/tarumt.php
 tarumt|../schools/tarumt/tarumt.php
 inti|../schools/inti/inti.php
+abc|../schools/abc/abc.php
+1234|../schools/1234/1234.php

@@ -134,9 +134,8 @@ if ($result && mysqli_num_rows($result) > 0) {
 
                         </li>
 
-
                         <li>
-                            <a href="dashboard.php">
+                            <a href="quiz_home.php">
                                 <div class="icon"><i class="fas fa-clipboard-list"></i></div>
                                 <div class="title">Quiz</div>
                             </a>

@@ -43,9 +43,14 @@ $result = $con->query($sql); // 使用正确的数据库连接变量 $con
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Question</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <link href="../css/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./asset/summernote-lite.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./asset/summernote-lite.js"></script>
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
     <style>
         :root {
             --bs-success-rgb: 71, 222, 152 !important;
@@ -112,9 +117,9 @@ $result = $con->query($sql); // 使用正确的数据库连接变量 $con
             <div class="navbar">
                 <div class="hamburger"><i class="fas fa-bars"></i></div>
                 <div class="logo">
-                    <a href="ViewSchoolList.php">School List</a>
-                    <a href="ViewTeacherList.php">Teacher List</a>
-                    <a href="ViewStudentList.php">Student List</a>
+                    <a href="teacher_ViewSchool.php">School List</a>
+                    <a href="teacher_list.php">Teacher List</a>
+                    <a href="student_list.php">Student List</a>
                 </div>
             </div>
 

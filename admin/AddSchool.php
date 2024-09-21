@@ -431,69 +431,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <ul class="siderbar_menu">
-                    <li>
-                        <a href="admin_index.php">
-                            <div class="icon"><i class="fas fa-home"></i></div>
-                            <div class="title">Home</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="icon"><i class="fas fa-hotel"></i></div>
-                            <div class="title">School</div>
-                            <div class="arrow"><i class="fas fa-chevron-down"></i></div>
-                        </a>
-                        <ul class="accordion">
-                            <li><a href="AddSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add School</a></li>
-                        </ul>
-                    </li>
+                        <li>
+                            <a href="admin_index.php">
+                                <div class="icon"><i class="fas fa-home"></i></div>
+                                <div class="title">Home</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon"><i class="fas fa-hotel"></i></div>
+                                <div class="title">School</div>
+                                <div class="arrow"><i class="fas fa-chevron-down"></i></div>
+                            </a>
+                            <ul class="accordion">
+                                <li><a href="AddSchool.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add School</a></li>
+                            </ul>
+                        </li>
 
-                    <li>
-                        <a href="#">
-                            <div class="icon"><i class="fas fa-user-tie"></i></div>
-                            <div class="title">Teachers</div>
-                            <div class="arrow"><i class="fas fa-chevron-down"></i></div>
-                        </a>
-                        <ul class="accordion">
-                            <li><a href="AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
-                        </ul>
-                    </li>
+                        <li>
+                            <a href="#">
+                                <div class="icon"><i class="fas fa-user-tie"></i></div>
+                                <div class="title">Teachers</div>
+                                <div class="arrow"><i class="fas fa-chevron-down"></i></div>
+                            </a>
+                            <ul class="accordion">
+                                <li><a href="AddTeacher.php" class="active"><i class="fas fa-user-plus pr-1"></i>Add Teachers</a></li>
+                            </ul>
+                        </li>
 
-                    <li>
-                        <a href="#">
-                            <div class="icon"><i class="fas fa-user-graduate"></i></div>
-                            <div class="title">Students</div>
-                            <div class="arrow"><i class="fas fa-chevron-down"></i></div>
-                        </a>
-                        <ul class="accordion">
-                            <li><a href="AddStudent.php" class="active"><i class="fas fa-users pr-1"></i>Add Students</a></li>
-                        </ul>
+                        <li>
+                            <a href="#">
+                                <div class="icon"><i class="fas fa-user-graduate"></i></div>
+                                <div class="title">Students</div>
+                                <div class="arrow"><i class="fas fa-chevron-down"></i></div>
+                            </a>
+                            <ul class="accordion">
+                                <li><a href="AddStudent.php" class="active"><i class="fas fa-users pr-1"></i>Add Students</a></li>
+                            </ul>
 
-                    </li>
-                    <li>
-                        <a href="quiz.php">
-                            <div class="icon"><i class="fas fa-clipboard-list"></i></div>
-                            <div class="title">Quiz</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="upload_image.php">
-                            <div class="icon"><i class="fas fa-calendar-alt"></i></div>
-                            <div class="title">Profile</div>
-                        </a>
-                    </li>
-                </ul>
-                <div class="logout_btn">
-                    <?php
-                    if (isset($_SESSION['username'])) {
-                        echo '<a href="logout.php">Logout</a>';
-                    } else {
-                        // 如果没有设置用户名会话，则显示登录按钮或其他登录相关的内容
-                        // 这里可以根据需要添加适当的登录按钮或链接
-                        echo '<a href="admin_login.php">Logout</a>';
-                    }
-                    ?>
-                </div>
+                        </li>
+                        <li>
+                            <a href="dashboard.php">
+                                <div class="icon"><i class="fas fa-clipboard-list"></i></div>
+                                <div class="title">Quiz</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../faq/IndexFaq.php">
+                                <div class="icon"><i class="fas fa-info-circle"></i></div>
+                                <div class="title">FAQ</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="upload_image.php">
+                                <div class="icon"><i class="fas fa-calendar-alt"></i></div>
+                                <div class="title">Profile</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="admin_login.php">
+                                <div class="icon"><i class="fas fa-sign-out-alt"></i></div>
+                                <div class="logout_btn">Logout</div>
+                            </a>
+                        </li>
+                    </ul>
 
             </div>
         </div>
@@ -504,9 +505,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <i class="fas fa-bars"></i>
                 </div>
                 <div class="logo">
-                    <a href="dashboard.php">User Dashboard</a>
-                    <a href="ViewSchoolList.php">View School List</a>
-                </div>
+                            <a href="../ViewSchoolList.php">School List</a>
+                            <a href="../ViewTeacherList.php">Teacher List</a>
+                            <a href="../ViewStudentList.php">Student List</a>
+                        </div>
             </div>
 
             <div class="content">
